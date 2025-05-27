@@ -17,14 +17,12 @@ class _PantallaLogoState extends State<PantallaLogo> {
   }
 
   void _navigateToNextScreen() async {
-    // Puedes ajustar el tiempo de espera aquí (ej. 3 segundos)
     await Future.delayed(const Duration(seconds: 3));
 
-    // Navega a la PantallaInicio y reemplaza la PantallaLogo en el historial de navegación.
-    // Esto evita que el usuario pueda volver a la PantallaLogo presionando el botón "atrás".
-    // 'mounted' es una verificación importante para asegurar que el widget sigue en el árbol antes de navegar.
+    // Navega a la PantallaInicio (o /patrimonio) y LA MANTIENE en el historial de navegación.
+    // Esto significa que el usuario PODRÁ volver a la PantallaLogo presionando el botón "atrás"
     if (mounted) {
-      Navigator.pushReplacementNamed(context, '/patrimonio'); // Asegúrate de que '/patrimonio' sea el nombre de ruta en main.dart
+      Navigator.pushNamed(context, '/patrimonio'); 
     }
   }
 
@@ -49,12 +47,7 @@ class _PantallaLogoState extends State<PantallaLogo> {
           Container(
             width: double.infinity,
             height: double.infinity,
-            // Ajusta el color y la opacidad como te guste.
-            // `Color.fromARGB(185, 80, 80, 80)` es casi un gris oscuro.
-            // `.withValues()` no es un método válido para `Color`.
-            // Lo corregimos a un `Color` con opacidad específica o `Colors.black.withOpacity()`.
-            color: const Color.fromRGBO(80, 80, 80, 0.725), // Equivalente a ARGB(185, 80, 80, 80)
-            // Otra opción: Colors.black.withOpacity(0.7), si prefieres negro más estándar.
+            color: const Color.fromRGBO(80, 80, 80, 0.725),
           ),
 
           // Posicionamiento del caminito con X e Y de Figma y opacidad
